@@ -1,6 +1,6 @@
 
 export enum QuestionType {
-  Single="single",
+  Text="text",
   Multiple="multiple",
   Boolean="boolean"
 };
@@ -17,7 +17,8 @@ export interface QuizItem {
   difficulty: `${QuestionDifficulty}`;
   question: string;
   correct_answer: string;
-  incorrect_answers?: string[];
+  incorrect_answers: string[];
+  answers: string[];
 }
 
 export type QuizProps = {

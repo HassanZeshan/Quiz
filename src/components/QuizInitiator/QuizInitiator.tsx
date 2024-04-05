@@ -4,19 +4,20 @@ type StartQuizProps = {
   questions: QuizItem[];
 };
 
-const StartQuiz: React.FC<StartQuizProps> = ({ questions }) => {
+const QuizInitiator: React.FC<StartQuizProps> = ({ questions }) => {
   const { startQuiz } = useQuizContext();
   return (
-    <div>
-      start quiz
+    <div className="col-8">
       <button
-        value="start Quiz"
+        className="btn btn-primary"
         onClick={() => {
           startQuiz(questions);
         }}
-      />
+      >
+        start Quiz
+      </button>
     </div>
   );
 };
 
-export default StartQuiz;
+export default QuizInitiator;

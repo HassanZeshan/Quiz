@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { QuizItem, Quiz } from "./components/Quiz";
 
@@ -25,14 +25,11 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
-      <div className="container mx-auto mt-8">
-        <header className="bg-gray-800 text-white p-4">
-          <h1 className="text-2xl font-bold">Cint Quiz</h1>
-        </header>
-        <div className="container mx-auto mt-8">
-          {quizzes && <Quiz questions={quizzes} />}
-        </div>
+    <div className="row text-center gy-6 ">
+      <h1>Cint Quiz</h1>
+
+      <div className="row justify-content-center gx-5 gy-5">
+        {quizzes && <Quiz questions={quizzes} />}
       </div>
     </div>
   );

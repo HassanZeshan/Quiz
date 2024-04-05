@@ -10,21 +10,57 @@ export const useQuiz = () => {
     questions: [],
   };
 
-  const randomQuizGenerator = (questions: QuizItem[]) => {
+  const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
     for (let i = questions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [questions[i], questions[j]] = [questions[j], questions[i]];
     }
-    return questions;    
+    return questions;
   };
 
-  const quizReducer=(state: StateType, action: QuizAction)=> {
+  function shuffleArray(array: string[]): string[] {
+    const newArray = [...array]; // Create a copy of the original array
+
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[randomIndex]] = [
+        newArray[randomIndex],
+        newArray[i],
+      ];
+    }
+    return newArray;
+  }
+
+  const calculateFinalScore = (state: StateType) => {
+    return state.currentQuestionIndex + 1 === state.questions.length
+      ? parseFloat(
+          ((state.correctAnswers / state.questions.length) * 100).toFixed(2)
+        )
+      : 0;
+  };
+
+  const adjustQuestionAnswers = (questions: QuizItem[]): QuizItem[] => {
+    return questions.map((question: QuizItem) => {
+      const incorrectAnswers = Array.isArray(question.incorrect_answers)
+        ? question.incorrect_answers
+        : [];
+
+      return {
+        ...question,
+        answers: shuffleArray([...incorrectAnswers, question.correct_answer]),
+      };
+    });
+  };
+
+  const quizReducer = (state: StateType, action: QuizAction) => {
     switch (action.type) {
       case "START_QUIZ": {
         return {
           ...initialState,
-          currentQuestionIndex: 1,
-          questions: randomQuizGenerator(action.payload.quiz),
+          currentQuestionIndex: 0,
+          questions: shuffleQuizQuestions(
+            adjustQuestionAnswers(action.payload.quiz)
+          ),
         };
       }
       case "NEXT_QUESTION":
@@ -34,21 +70,19 @@ export const useQuiz = () => {
           correctAnswers: action.payload.isCorrect
             ? state.correctAnswers + 1
             : state.correctAnswers,
-          finalScore:
-            state.currentQuestionIndex == state.questions.length
-              ? (state.correctAnswers * 100) / state.questions.length
-              : 0,
+          finalScore: calculateFinalScore(state),
         };
       case "RESET_QUIZ": {
         return {
           ...initialState,
-          questions: randomQuizGenerator(state.questions),
+          currentQuestionIndex: 0,
+          questions: shuffleQuizQuestions(state.questions),
         };
       }
       default:
         return state;
     }
-  }
+  };
 
   const [state, dispatch] = useReducer(quizReducer, initialState);
 
