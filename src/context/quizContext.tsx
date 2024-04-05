@@ -1,7 +1,16 @@
 import React, { ReactNode, createContext, useContext } from "react";
 import { useQuiz } from "../hooks/useQuiz";
+import { StateType } from "../hooks/types";
+import { QuizItem } from "../components/Quiz";
 
-const QuizContext = createContext<any>(null);
+interface ContextStateType extends StateType {
+  currentQuestion?: QuizItem;
+  nextQuestion: (userAnswer: boolean) => void;
+  restartQuiz: () => void;
+  startQuiz: (quiz: QuizItem[]) => void;
+}
+
+const QuizContext = createContext<ContextStateType | undefined>(undefined);
 
 export const useQuizContext = () => {
   const context = useContext(QuizContext);
@@ -15,9 +24,16 @@ export const useQuizContext = () => {
 export const QuizProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const quiz = useQuiz();
+  const quizState = useQuiz();
+  const contextValue: ContextStateType = {
+    ...quizState,
+    correctAnswers: quizState.correctAnswers, // Include correctAnswers
+    questions: quizState.questions, // Include questions
+  };
 
-  return <QuizContext.Provider value={quiz}>{children}</QuizContext.Provider>;
+  return (
+    <QuizContext.Provider value={contextValue}>{children}</QuizContext.Provider>
+  );
 };
 
 export default QuizProvider;

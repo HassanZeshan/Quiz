@@ -1,5 +1,5 @@
-function MultipleChoices() {
+function FormSelect() {
   return <div>Multiple Choices</div>;
 }
 
-export default MultipleChoices;
+export default FormSelect;

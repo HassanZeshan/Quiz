@@ -1,5 +1,5 @@
-function SingleChoices() {
+const FormSingle = () => {
   return <div>Single Choice</div>;
-}
+};
 
-export default SingleChoices;
+export default FormSingle;

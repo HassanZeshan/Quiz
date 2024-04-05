@@ -1,5 +1,5 @@
-function BooleanChoice() {
-  return <div>boolean choices</div>;
+function FormText() {
+  return <div>FormText</div>;
 }
 
-export default BooleanChoice;
+export default FormText;

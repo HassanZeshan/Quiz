@@ -62,8 +62,7 @@ export const useQuiz = () => {
   };
 
   return {
-    finalScore: state.finalScore,
-    currentQuestionIndex: state.currentQuestionIndex,
+    ...state,
     currentQuestion: getCurrentQuestion(),
     startQuiz,
     nextQuestion,

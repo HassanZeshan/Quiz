@@ -7,8 +7,6 @@ import { Summary } from "../Summary";
 const Quiz: React.FC<QuizProps> = ({ questions }) => {
   const { finalScore, currentQuestionIndex, currentQuestion } =
     useQuizContext();
-
-  console.log(currentQuestion, "currentQuestion...");
   return (
     <>
       {finalScore && <Summary />}

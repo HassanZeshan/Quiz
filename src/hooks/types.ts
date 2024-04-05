@@ -1,11 +1,11 @@
 import { QuizItem } from "../components/Quiz";
 
 
-export type StateType={
+export interface StateType {
     currentQuestionIndex: number;
-    correctAnswers: number,
-    finalScore: number,
-    questions: QuizItem[]
+    correctAnswers: number;
+    finalScore: number;
+    questions: QuizItem[];
 
 }
 

@@ -1,4 +1,5 @@
 import { useQuizContext } from "../../context/quizContext";
+import { FormSelect, FormSwitch, FormText } from "../Form";
 
 const Question = () => {
   const { nextQuestion, currentQuestion } = useQuizContext();
@@ -7,7 +8,16 @@ const Question = () => {
     const isCorrect = true;
     nextQuestion(isCorrect);
   };
-
+  const getByFormType = (type: string) => {
+    switch (type) {
+      case "boolean":
+        return <FormSwitch />;
+      case "single":
+        return <FormSelect />;
+      case "multiple":
+        return <FormText />;
+    }
+  };
   return (
     <div>
       {!currentQuestion && <div>Question Not found </div>}
@@ -18,6 +28,8 @@ const Question = () => {
               className="text-xl font-bold mb-2"
               dangerouslySetInnerHTML={{ __html: currentQuestion.question }}
             />
+
+            {getByFormType(currentQuestion.type)}
             <button value="Next" onClick={() => calculateResult()} />
           </div>
         </>
