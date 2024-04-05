@@ -1,7 +1,7 @@
 import { useQuizContext } from "../../context/quizContext";
 
 const Summary = () => {
-  const { restartQuiz } = useQuizContext();
+  const { restartQuiz, finalScore } = useQuizContext();
   return (
     <div>
       summary page and restart quiz

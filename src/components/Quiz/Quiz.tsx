@@ -10,7 +10,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
   return (
     <>
       {finalScore && <Summary />}
-      {!currentQuestionIndex && <StartQuiz questions={questions} />}
+      {currentQuestionIndex >= 0 && <StartQuiz questions={questions} />}
       {currentQuestion && <Question />}
     </>
   );

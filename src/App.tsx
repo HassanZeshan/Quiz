@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import "./App.css";
 import { QuizItem, Quiz } from "./components/Quiz";
-import axios from "axios";
 
 const App = () => {
   const [quizzes, setQuizzes] = useState<QuizItem[]>([]);
@@ -12,9 +11,14 @@ const App = () => {
 
   const fetchQuizzes = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3001/api/quiz");
+      const response = await fetch("http://localhost:3001/api/quiz");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-      setQuizzes(data);
+      const { results } = await response.json(); // Parse the JSON data
+
+      setQuizzes(results);
     } catch (e) {
       console.log("Error Loading data", e);
     }

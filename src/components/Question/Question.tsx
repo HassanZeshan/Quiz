@@ -8,6 +8,7 @@ const Question = () => {
     const isCorrect = true;
     nextQuestion(isCorrect);
   };
+
   const getByFormType = (type: string) => {
     switch (type) {
       case "boolean":
@@ -18,6 +19,7 @@ const Question = () => {
         return <FormText />;
     }
   };
+  
   return (
     <div>
       {!currentQuestion && <div>Question Not found </div>}

@@ -9,12 +9,9 @@ module.exports = function (app) {
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content-Type, Accept"
     );
-    if ("OPTIONS" == req.method) {
-      res.sendStatus(200);
-    } else {
-      next();
-    }
+
+    next();
   });
-  app.use(express.json());
+  // app.use(express.json());
   app.use("/api/quiz", quizzes);
 };

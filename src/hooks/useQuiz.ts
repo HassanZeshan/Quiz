@@ -4,17 +4,21 @@ import { QuizAction, StateType } from "./types";
 
 export const useQuiz = () => {
   const initialState: StateType = {
-    currentQuestionIndex: 0,
+    currentQuestionIndex: -1,
     correctAnswers: 0,
     finalScore: 0,
     questions: [],
   };
 
   const randomQuizGenerator = (questions: QuizItem[]) => {
-    return questions;
+    for (let i = questions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
+    return questions;    
   };
 
-  function quizReducer(state: StateType, action: QuizAction) {
+  const quizReducer=(state: StateType, action: QuizAction)=> {
     switch (action.type) {
       case "START_QUIZ": {
         return {

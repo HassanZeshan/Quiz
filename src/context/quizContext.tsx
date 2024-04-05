@@ -20,7 +20,7 @@ export const useQuizContext = () => {
   return context;
 };
 
-// Quiz provider component
+
 export const QuizProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {

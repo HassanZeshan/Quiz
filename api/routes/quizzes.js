@@ -1,16 +1,16 @@
 const { error } = require("console");
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
+const fs = require("fs").promises;
 
 router.get("/", async (req, res) => {
   // Read the JSON file
   try {
-    const data = await fs.readFile("../Api/data.json", "utf8");
-    res.json(data);
+    const data = await fs.readFile("../api/data.json", "utf8");
+    res.status(200).send(data);
   } catch (e) {
-    console.error(error);
-    res.json(500).send(error.message);
+    console.error(e);
+    res.status(500).send({ error: e.message });
   }
 });
 
