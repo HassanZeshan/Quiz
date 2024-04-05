@@ -4,7 +4,7 @@ import { QuizAction, StateType } from "./types";
 
 export const useQuiz = () => {
   const initialState: StateType = {
-    currentQuestionIndex: 1,
+    currentQuestionIndex: 0,
     correctAnswers: 0,
     finalScore: 0,
     questions: [],
@@ -58,18 +58,7 @@ export const useQuiz = () => {
     dispatch({ type: "NEXT_QUESTION", payload: { isCorrect: userAnswer } });
   };
   const getCurrentQuestion = () => {
-    return {
-      "category":"Entertainment: Video Games",
-      "type":"multiple",
-      "difficulty":"easy",
-      "question":"Which game did &quot;Sonic The Hedgehog&quot; make his first appearance in?",
-      "correct_answer":"Rad Mobile",
-      "incorrect_answers":[
-        "Sonic The Hedgehog",
-        "Super Mario 64",
-        "Mega Man"
-      ]
-    };
+    return state.questions[state.currentQuestionIndex];
   };
 
   return {

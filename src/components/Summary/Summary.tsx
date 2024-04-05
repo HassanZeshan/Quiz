@@ -1,7 +1,7 @@
-import { useQuiz } from "../../hooks/useQuiz";
+import { useQuizContext } from "../../context/quizContext";
 
 const Summary = () => {
-  const { restartQuiz } = useQuiz();
+  const { restartQuiz } = useQuizContext();
   return (
     <div>
       summary page and restart quiz

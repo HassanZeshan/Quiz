@@ -1,7 +1,7 @@
-import { useQuiz } from "../../hooks/useQuiz";
+import { useQuizContext } from "../../context/quizContext";
 
 const Question = () => {
-  const { nextQuestion, currentQuestion } = useQuiz();
+  const { nextQuestion, currentQuestion } = useQuizContext();
 
   const calculateResult = () => {
     const isCorrect = true;

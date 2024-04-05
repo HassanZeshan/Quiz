@@ -1,11 +1,11 @@
-import { useQuiz } from "../../hooks/useQuiz";
+import { useQuizContext } from "../../context/quizContext";
 import { QuizItem } from "../Quiz";
 type StartQuizProps = {
   questions: QuizItem[];
 };
 
 const StartQuiz: React.FC<StartQuizProps> = ({ questions }) => {
-  const { startQuiz } = useQuiz();
+  const { startQuiz } = useQuizContext();
   return (
     <div>
       start quiz

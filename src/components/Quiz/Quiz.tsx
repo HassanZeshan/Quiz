@@ -1,15 +1,16 @@
 import { QuizProps } from ".";
-import { useQuiz } from "../../hooks/useQuiz";
+import { useQuizContext } from "../../context/quizContext";
 import Question from "../Question/Question";
 import { StartQuiz } from "../StartQuiz";
 import { Summary } from "../Summary";
 
 const Quiz: React.FC<QuizProps> = ({ questions }) => {
-  const { finalScore, currentQuestionIndex, currentQuestion } = useQuiz();
+  const { finalScore, currentQuestionIndex, currentQuestion } =
+    useQuizContext();
 
   console.log(currentQuestion, "currentQuestion...");
   return (
-    <>      
+    <>
       {finalScore && <Summary />}
       {!currentQuestionIndex && <StartQuiz questions={questions} />}
       {currentQuestion && <Question />}
