@@ -18,7 +18,8 @@ export interface QuizItem {
   question: string;
   correct_answer: string;
   incorrect_answers: string[];
-  answers: string[];
+  answers: string[];  
+  selectedValue:string;
 }
 
 export type QuizProps = {

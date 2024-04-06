@@ -2,25 +2,20 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { QuizItem, Quiz } from "./components/Quiz";
+import { fetchQuizzes } from "./api/quiz";
 
 const App = () => {
   const [quizzes, setQuizzes] = useState<QuizItem[]>([]);
   useEffect(() => {
-    fetchQuizzes();
+    loadQuizzes();
   }, []);
 
-  const fetchQuizzes = async () => {
+  const loadQuizzes = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/quiz");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const { results } = await response.json();
-
-      setQuizzes(results);
-    } catch (e) {
-      console.log("Error Loading data", e);
+      const data = await fetchQuizzes();
+      setQuizzes(data);
+    } catch (error) {
+      console.error("Error loading data:", error);
     }
   };
 

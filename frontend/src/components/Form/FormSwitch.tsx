@@ -1,4 +1,7 @@
+// import { useQuizContext } from "../../context/quizContext";
+
 const FormSingle = () => {
+  // const { currentQuestion } = useQuizContext();
   return (
     <div>
       <div className="form-check">
@@ -7,6 +10,9 @@ const FormSingle = () => {
           type="radio"
           name="questionRadio"
           value="true"
+          // onChange={(e) => {
+          //   currentQuestion.value = e.target.value;
+          // }}
         />
         <label className="form-check-label">True</label>
       </div>
@@ -16,6 +22,9 @@ const FormSingle = () => {
           type="radio"
           name="questionRadio"
           value="false"
+          // onChange={(e) => {
+          //   currentQuestion.value = e.target.value;
+          // }}
         />
         <label className="form-check-label">False</label>
       </div>

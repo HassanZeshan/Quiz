@@ -6,7 +6,7 @@ const fs = require("fs").promises;
 router.get("/", async (req, res) => {
   // Read the JSON file
   try {
-    const data = await fs.readFile("../api/data.json", "utf8");
+    const data = await fs.readFile("../backend/data.json", "utf8");
     res.status(200).send(data);
   } catch (e) {
     console.error(e);

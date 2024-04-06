@@ -9,9 +9,9 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
   const { finalScore, currentQuestionIndex, currentQuestion, nextQuestion } =
     useQuizContext();
 
-  const calculateResult = (e: FormEvent<HTMLFormElement>) => {
+  const calculateResult = (event: FormEvent<HTMLFormElement>) => {
     let formData: string = "";
-    const formInputs = (e.target as HTMLElement).querySelectorAll("input");
+    const formInputs = (event.target as HTMLElement).querySelectorAll("input");
     formInputs.forEach((input: HTMLInputElement) => {
       if (input.type === "text") {
         formData = input.value;
@@ -20,7 +20,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
       }
     });
 
-    e.preventDefault();
+    event.preventDefault();
     nextQuestion(formData);
   };
 
@@ -30,6 +30,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
       {currentQuestionIndex < 0 && <QuizInitiator questions={questions} />}
       {currentQuestion && (
         <form onSubmit={calculateResult}>
+          state form data
           <Question />
           <button className="btn btn-primary" type="submit">
             Next Question

@@ -1,3 +1,4 @@
+import { Star, StarFill, StarHalf } from "react-bootstrap-icons";
 import { useQuizContext } from "../../context/quizContext";
 import { FormSelect, FormSwitch, FormText } from "../Form";
 
@@ -12,11 +13,21 @@ const Question = () => {
             className="text-xl font-bold mb-2"
             dangerouslySetInnerHTML={{ __html: currentQuestion.question }}
           />
+          {currentQuestion.category}
+          {currentQuestion.difficulty === "easy" && (
+            <Star color="green" size={32} />
+          )}
+          {currentQuestion.difficulty === "medium" && (
+            <StarHalf color="orange" size={32} />
+          )}
+          {currentQuestion.difficulty === "hard" && (
+            <StarFill color="red" size={32} />
+          )}
 
           {currentQuestion.type === "boolean" && <FormSwitch />}
           {currentQuestion.type === "text" && <FormText />}
           {currentQuestion.type === "multiple" && (
-            <FormSelect options={currentQuestion?.answers} />
+            <FormSelect options={currentQuestion.answers} />
           )}
         </div>
       )}

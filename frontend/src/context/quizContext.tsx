@@ -4,7 +4,7 @@ import { StateType } from "../hooks/types";
 import { QuizItem } from "../components/Quiz";
 
 interface ContextStateType extends StateType {
-  currentQuestion?: QuizItem;
+  currentQuestion: QuizItem;
   nextQuestion: (userAnswer: string) => void;
   restartQuiz: () => void;
   startQuiz: (quiz: QuizItem[]) => void;

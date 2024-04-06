@@ -11,7 +11,8 @@ const FormSelect: React.FC<SelectProps> = ({ options }) => {
               className="form-check-input"
               type="radio"
               value={option}
-              name={"formRadio" + index}
+              name={"formRadio"}
+              key={index}
             />
             <label className="form-check-label"> {option} </label>
           </div>

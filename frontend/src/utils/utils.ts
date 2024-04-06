@@ -2,25 +2,31 @@ import { QuizItem } from "../components/Quiz";
 import { StateType } from "../hooks/types";
 
 export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
-    for (let i = questions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [questions[i], questions[j]] = [questions[j], questions[i]];
+    for (let currentIndex = questions.length - 1; currentIndex > 0; currentIndex--) {
+      const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
+      [questions[currentIndex], questions[randomIndex]] = [questions[randomIndex], questions[currentIndex]];
     }
     return questions;
   };
 
-  export const shuffleArray=(array: string[]): string[]=> {
-    const newArray = [...array]; 
 
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const randomIndex = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[randomIndex]] = [
-        newArray[randomIndex],
-        newArray[i],
+
+  export const shuffleArray = (array: string[]): string[] => {
+    
+    const shuffledArray = [...array];  
+    
+    for (let currentIndex = shuffledArray.length - 1; currentIndex > 0; currentIndex--) {
+    
+      const randomIndex = Math.floor(Math.random() * (currentIndex + 1));  
+    
+      [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
+        shuffledArray[randomIndex],
+        shuffledArray[currentIndex],
       ];
-    }
-    return newArray;
-  }
+    } 
+    
+    return shuffledArray;
+  };
 
   export const adjustQuestionAnswers = (questions: QuizItem[]): QuizItem[] => {
     return questions.map((question: QuizItem) => {
@@ -31,6 +37,8 @@ export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
       return {
         ...question,
         answers: shuffleArray([...incorrectAnswers, question.correct_answer]),
+        name:'',
+        value:'',        
       };
     });
   };
