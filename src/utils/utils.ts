@@ -1,4 +1,5 @@
 import { QuizItem } from "../components/Quiz";
+import { StateType } from "../hooks/types";
 
 export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
     for (let i = questions.length - 1; i > 0; i--) {
@@ -32,4 +33,12 @@ export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
         answers: shuffleArray([...incorrectAnswers, question.correct_answer]),
       };
     });
+  };
+
+  export const calculateFinalScore = (state: StateType) => {       
+    return state.currentQuestionIndex  === state.questions.length
+      ? parseFloat(
+          ((state.correctAnswers / state.questions.length) * 100).toFixed(2)
+        )
+      : -1;
   };

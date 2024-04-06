@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { QuizItem } from "../components/Quiz";
 import { QuizAction, StateType } from "./types";
-import { adjustQuestionAnswers, shuffleQuizQuestions } from "../utils/utils";
+import { adjustQuestionAnswers, calculateFinalScore, shuffleQuizQuestions } from "../utils/utils";
 
 export const useQuiz = () => {
   const initialState: StateType = {
@@ -10,16 +10,7 @@ export const useQuiz = () => {
     attemptedQuestion:0,
     finalScore: -1,
     questions: [],
-  }; 
-
-
-  const calculateFinalScore = (state: StateType) => {       
-    return state.currentQuestionIndex  === state.questions.length
-      ? parseFloat(
-          ((state.correctAnswers / state.questions.length) * 100).toFixed(2)
-        )
-      : -1;
-  };
+  };  
 
   const quizReducer = (state: StateType, action: QuizAction)=>  {
     switch (action.type) {
@@ -62,7 +53,7 @@ export const useQuiz = () => {
     }
   };
 
-    const [state, dispatch] = useReducer(quizReducer, initialState);
+  const [state, dispatch] = useReducer(quizReducer, initialState);
 
   const startQuiz = (quiz: QuizItem[]) => {
     dispatch({ type: "START_QUIZ", payload: { quiz } });
