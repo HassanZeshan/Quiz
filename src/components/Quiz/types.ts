@@ -2,7 +2,7 @@
 export enum QuestionType {
   Text="text",
   Multiple="multiple",
-  Boolean="boolean"
+  Boolean="boolean",  
 };
 
 enum QuestionDifficulty {

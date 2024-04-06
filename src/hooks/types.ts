@@ -9,8 +9,13 @@ export interface StateType {
     questions: QuizItem[];
 
 }
+export enum ActionType {
+  "NEXT_QUESTION",
+  "RESET_QUIZ",
+  "START_QUIZ"
+}
 
 export type QuizAction =
-  | { type: "NEXT_QUESTION"; payload: { userAnswer: string } }
-  | { type: "RESET_QUIZ" }
-  | { type: "START_QUIZ"; payload: { quiz: QuizItem[] } };
+  | { type: ActionType.NEXT_QUESTION ; payload: { userAnswer: string } }
+  | { type: ActionType.RESET_QUIZ }
+  | { type: ActionType.START_QUIZ; payload: { quiz: QuizItem[] } };

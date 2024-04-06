@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import { QuizItem } from "../components/Quiz";
-import { QuizAction, StateType } from "./types";
+import { ActionType, QuizAction, StateType } from "./types";
 import { adjustQuestionAnswers, calculateFinalScore, shuffleQuizQuestions } from "../utils/utils";
 
 export const useQuiz = () => {
@@ -14,7 +14,7 @@ export const useQuiz = () => {
 
   const quizReducer = (state: StateType, action: QuizAction)=>  {
     switch (action.type) {
-      case "START_QUIZ": {
+      case ActionType.START_QUIZ: {
         return {
           ...initialState,
           currentQuestionIndex: 0,
@@ -23,9 +23,9 @@ export const useQuiz = () => {
           ),
         };
       }
-      case "NEXT_QUESTION":{
-        const correct_answer=state.questions[state.currentQuestionIndex].correct_answer.toLowerCase();
-        const user_answer=action.payload.userAnswer.toLowerCase();       
+      case ActionType.NEXT_QUESTION:{
+        const correct_answer=state.questions[state.currentQuestionIndex].correct_answer.trim().toLowerCase();
+        const user_answer=action.payload.userAnswer.trim().toLowerCase();       
         
       const updatedState={
           ...state,
@@ -41,7 +41,7 @@ export const useQuiz = () => {
           finalScore: calculateFinalScore(updatedState),
         };        
       } 
-      case "RESET_QUIZ": {
+      case ActionType.RESET_QUIZ: {
         return {
           ...initialState,
           currentQuestionIndex: 0,
@@ -56,13 +56,13 @@ export const useQuiz = () => {
   const [state, dispatch] = useReducer(quizReducer, initialState);
 
   const startQuiz = (quiz: QuizItem[]) => {
-    dispatch({ type: "START_QUIZ", payload: { quiz } });
+    dispatch({ type: ActionType.START_QUIZ, payload: { quiz } });
   };
   const restartQuiz = () => {
-    dispatch({ type: "RESET_QUIZ" });
+    dispatch({ type: ActionType.RESET_QUIZ });
   };
   const nextQuestion = (userAnswer: string) => {
-    dispatch({ type: "NEXT_QUESTION", payload: { userAnswer } });
+    dispatch({ type: ActionType.NEXT_QUESTION, payload: { userAnswer } });
   };
   const getCurrentQuestion =()=> {
     return state.questions[state.currentQuestionIndex];

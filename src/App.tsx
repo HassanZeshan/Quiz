@@ -16,7 +16,7 @@ const App = () => {
         throw new Error("Network response was not ok");
       }
 
-      const { results } = await response.json(); // Parse the JSON data
+      const { results } = await response.json();
 
       setQuizzes(results);
     } catch (e) {
