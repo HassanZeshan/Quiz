@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { QuizItem, Quiz } from "./components/Quiz";
-import { fetchQuizzes } from "./api/quiz";
+import { QuizItem, Quiz } from "@components/Quiz";
+import { fetchQuizzes } from "@api/quiz";
 
 const App = () => {
   const [quizzes, setQuizzes] = useState<QuizItem[]>([]);

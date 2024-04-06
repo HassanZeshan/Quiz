@@ -1,4 +1,4 @@
-import { QuizItem } from "../components/Quiz";
+import { QuizItem } from "@components/Quiz";
 
 
 export interface StateType {

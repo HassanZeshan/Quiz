@@ -7,13 +7,14 @@ export default defineConfig({
     (viteEnvCompatiblePlugin as any)({      
       dotenvFile: '.env'
     })
-  ],
+  ],  
   resolve: {
     alias: {
       '@components': '/src/components',
       '@utils': '/src/utils',
-      '@hooks':'/src/hooks'
-      // Add more aliases as needed
+      '@hooks':'/src/hooks',
+      '@api':'/src/api',      
     },
-  },  
+  }, 
+   
 })

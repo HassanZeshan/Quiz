@@ -1,7 +1,7 @@
 import { useReducer } from "react";
-import { QuizItem } from "../components/Quiz";
+import { QuizItem } from "@components/Quiz";
 import { ActionType, QuizAction, StateType } from "./types";
-import { adjustQuestionAnswers, calculateFinalScore, shuffleQuizQuestions } from "../utils/utils";
+import { adjustQuestionAnswers, calculateFinalScore, shuffleQuizQuestions } from "@utils/utils";
 
 export const useQuiz = () => {
   const initialState: StateType = {
