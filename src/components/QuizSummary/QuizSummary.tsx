@@ -1,12 +1,17 @@
 import { useQuizContext } from "../../context/quizContext";
 
 const QuizSummary = () => {
-  const { restartQuiz, finalScore, correctAnswers, questions } =
-    useQuizContext();
+  const {
+    restartQuiz,
+    finalScore,
+    correctAnswers,
+    questions,
+    attemptedQuestion,
+  } = useQuizContext();
 
   return (
     <div>
-      summary page and restart quiz
+      <h1>Result</h1>
       <div className="row mb-4">
         <div className="row">
           <div> Correct:</div>
@@ -18,7 +23,7 @@ const QuizSummary = () => {
         </div>
         <div className="row">
           <div> Question Answered:</div>
-          <div>{questions.length}</div>
+          <div>{attemptedQuestion}</div>
         </div>
         <div className="row">
           <div> Final Score:</div>

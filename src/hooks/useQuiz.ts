@@ -1,58 +1,27 @@
 import { useReducer } from "react";
 import { QuizItem } from "../components/Quiz";
 import { QuizAction, StateType } from "./types";
+import { adjustQuestionAnswers, shuffleQuizQuestions } from "../utils/utils";
 
 export const useQuiz = () => {
   const initialState: StateType = {
     currentQuestionIndex: -1,
     correctAnswers: 0,
-    finalScore: 0,
+    attemptedQuestion:0,
+    finalScore: -1,
     questions: [],
-  };
+  }; 
 
-  const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
-    for (let i = questions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [questions[i], questions[j]] = [questions[j], questions[i]];
-    }
-    return questions;
-  };
 
-  function shuffleArray(array: string[]): string[] {
-    const newArray = [...array]; // Create a copy of the original array
-
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const randomIndex = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[randomIndex]] = [
-        newArray[randomIndex],
-        newArray[i],
-      ];
-    }
-    return newArray;
-  }
-
-  const calculateFinalScore = (state: StateType) => {
-    return state.currentQuestionIndex + 1 === state.questions.length
+  const calculateFinalScore = (state: StateType) => {       
+    return state.currentQuestionIndex  === state.questions.length
       ? parseFloat(
           ((state.correctAnswers / state.questions.length) * 100).toFixed(2)
         )
-      : 0;
+      : -1;
   };
 
-  const adjustQuestionAnswers = (questions: QuizItem[]): QuizItem[] => {
-    return questions.map((question: QuizItem) => {
-      const incorrectAnswers = Array.isArray(question.incorrect_answers)
-        ? question.incorrect_answers
-        : [];
-
-      return {
-        ...question,
-        answers: shuffleArray([...incorrectAnswers, question.correct_answer]),
-      };
-    });
-  };
-
-  const quizReducer = (state: StateType, action: QuizAction) => {
+  const quizReducer = (state: StateType, action: QuizAction)=>  {
     switch (action.type) {
       case "START_QUIZ": {
         return {
@@ -63,15 +32,24 @@ export const useQuiz = () => {
           ),
         };
       }
-      case "NEXT_QUESTION":
-        return {
+      case "NEXT_QUESTION":{
+        const correct_answer=state.questions[state.currentQuestionIndex].correct_answer.toLowerCase();
+        const user_answer=action.payload.userAnswer.toLowerCase();       
+        
+      const updatedState={
           ...state,
           currentQuestionIndex: state.currentQuestionIndex + 1,
-          correctAnswers: action.payload.isCorrect
+          attemptedQuestion:user_answer.trim().length>0?state.attemptedQuestion+1:state.attemptedQuestion,
+          correctAnswers: correct_answer===user_answer
             ? state.correctAnswers + 1
-            : state.correctAnswers,
-          finalScore: calculateFinalScore(state),
+            : state.correctAnswers,          
         };
+
+        return {
+          ...updatedState,
+          finalScore: calculateFinalScore(updatedState),
+        };        
+      } 
       case "RESET_QUIZ": {
         return {
           ...initialState,
@@ -84,7 +62,7 @@ export const useQuiz = () => {
     }
   };
 
-  const [state, dispatch] = useReducer(quizReducer, initialState);
+    const [state, dispatch] = useReducer(quizReducer, initialState);
 
   const startQuiz = (quiz: QuizItem[]) => {
     dispatch({ type: "START_QUIZ", payload: { quiz } });
@@ -92,10 +70,10 @@ export const useQuiz = () => {
   const restartQuiz = () => {
     dispatch({ type: "RESET_QUIZ" });
   };
-  const nextQuestion = (userAnswer: boolean) => {
-    dispatch({ type: "NEXT_QUESTION", payload: { isCorrect: userAnswer } });
+  const nextQuestion = (userAnswer: string) => {
+    dispatch({ type: "NEXT_QUESTION", payload: { userAnswer } });
   };
-  const getCurrentQuestion = () => {
+  const getCurrentQuestion =()=> {
     return state.questions[state.currentQuestionIndex];
   };
 

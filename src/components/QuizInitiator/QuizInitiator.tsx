@@ -14,7 +14,7 @@ const QuizInitiator: React.FC<StartQuizProps> = ({ questions }) => {
           startQuiz(questions);
         }}
       >
-        start Quiz
+        Begin
       </button>
     </div>
   );

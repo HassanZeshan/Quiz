@@ -6,7 +6,6 @@ const FormSingle = () => {
           className="form-check-input"
           type="radio"
           name="questionRadio"
-          id="questionRadio1"
           value="true"
         />
         <label className="form-check-label">True</label>
@@ -16,7 +15,6 @@ const FormSingle = () => {
           className="form-check-input"
           type="radio"
           name="questionRadio"
-          id="questionRadio2"
           value="false"
         />
         <label className="form-check-label">False</label>

@@ -4,14 +4,14 @@ type SelectProps = {
 const FormSelect: React.FC<SelectProps> = ({ options }) => {
   return (
     <div>
-      {options.map((option) => {
+      {options.map((option, index) => {
         return (
           <div className="form-check">
             <input
               className="form-check-input"
-              type="checkbox"
+              type="radio"
               value={option}
-              id="flexCheckDefault"
+              name={"formRadio" + index}
             />
             <label className="form-check-label"> {option} </label>
           </div>

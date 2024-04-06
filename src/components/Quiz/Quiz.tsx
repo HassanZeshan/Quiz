@@ -10,14 +10,23 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
     useQuizContext();
 
   const calculateResult = (e: FormEvent<HTMLFormElement>) => {
+    let formData: string = "";
+    const formInputs = (e.target as HTMLElement).querySelectorAll("input");
+    formInputs.forEach((input: HTMLInputElement) => {
+      if (input.type === "text") {
+        formData = input.value;
+      } else if (input.checked) {
+        formData = input.value;
+      }
+    });
+
     e.preventDefault();
-    const isCorrect = true;
-    nextQuestion(isCorrect);
+    nextQuestion(formData);
   };
 
   return (
     <div className="row justify-content-center">
-      {finalScore > 0 && <QuizSummary />}
+      {finalScore >= 0 && <QuizSummary />}
       {currentQuestionIndex < 0 && <QuizInitiator questions={questions} />}
       {currentQuestion && (
         <form onSubmit={calculateResult}>

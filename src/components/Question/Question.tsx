@@ -3,7 +3,6 @@ import { FormSelect, FormSwitch, FormText } from "../Form";
 
 const Question = () => {
   const { currentQuestion } = useQuizContext();
-  console.log(currentQuestion, "current Question");
   return (
     <div>
       {!currentQuestion && <div>Question Not found </div>}

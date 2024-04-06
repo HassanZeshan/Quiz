@@ -5,7 +5,7 @@ import { QuizItem } from "../components/Quiz";
 
 interface ContextStateType extends StateType {
   currentQuestion?: QuizItem;
-  nextQuestion: (userAnswer: boolean) => void;
+  nextQuestion: (userAnswer: string) => void;
   restartQuiz: () => void;
   startQuiz: (quiz: QuizItem[]) => void;
 }
@@ -20,15 +20,14 @@ export const useQuizContext = () => {
   return context;
 };
 
-
 export const QuizProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const quizState = useQuiz();
   const contextValue: ContextStateType = {
     ...quizState,
-    correctAnswers: quizState.correctAnswers, // Include correctAnswers
-    questions: quizState.questions, // Include questions
+    correctAnswers: quizState.correctAnswers,
+    questions: quizState.questions,
   };
 
   return (
