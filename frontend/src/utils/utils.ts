@@ -42,7 +42,8 @@ export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
     });
   };
 
-  export const calculateFinalScore = (state: StateType) => {       
+  export const calculateFinalScore = (state: StateType) => {   
+    console.log(state);    
     return state.currentQuestionIndex  === state.questions.length
       ? parseFloat(
           ((state.correctAnswers / state.questions.length) * 100).toFixed(2)
