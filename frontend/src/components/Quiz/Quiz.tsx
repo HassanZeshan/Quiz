@@ -5,10 +5,16 @@ import { QuizInitiator } from "../QuizInitiator";
 import { QuizSummary } from "../QuizSummary";
 import { Star, StarFill, StarHalf } from "react-bootstrap-icons";
 import { QuizItem } from "../../types";
+import styled from "styled-components";
 
 type QuizProps = {
   questions: QuizItem[];
 };
+
+const QuizCard = styled.div`
+  width: 60rem;
+  height: 25rem;
+`;
 
 const Quiz: React.FC<QuizProps> = ({ questions }) => {
   const {
@@ -26,7 +32,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
 
   return (
     <div className="row justify-content-center">
-      <div className="card quiz-card">
+      <QuizCard className="card">
         <div className="card-body">
           {currentQuestionIndex < 0 && <QuizInitiator questions={questions} />}
           {currentQuestion && (
@@ -70,7 +76,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
           )}
           {finalScore >= 0 && <QuizSummary />}
         </div>
-      </div>
+      </QuizCard>
     </div>
   );
 };

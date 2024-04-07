@@ -12,18 +12,16 @@ const FormSelect: React.FC<SelectProps> = ({ options }) => {
     <>
       {options.map((option, index) => {
         return (
-          <div className="form-check text-left">
+          <div className="form-check text-left" key={index}>
             <input
               className="form-check-input"
               type="radio"
               value={option}
               name={"formRadio"}
-              key={index}
               id={option}
               onChange={handleChange}
             />
             <label className="form-check-label" htmlFor={option}>
-              
               {option}
             </label>
           </div>

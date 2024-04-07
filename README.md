@@ -14,6 +14,43 @@ Before starting development, ensure you have the following installed:
   - npm (Node Package Manager, comes with Node.js)
   - Git (<https://git-scm.com/>)
 
+## Frontend
+
+This frontend application is developed using React, TypeScript, Bootstrap, and Vite. It provides a user interface for interacting with the quiz data served by the backend.
+
+Navigate to the frontend directory.
+Install dependencies using the following command:
+
+```node
+npm install
+npm run dev
+```
+
+- Ensure that the backend server is running on port 3001. If it's running on a different port, update the VITE_APP_BASE_PATH variable in the .env file.
+
+### Running Tests & Build
+
+To build the frontend for production and testing:
+
+```node
+npm run build
+npm run test
+```
+
+### Working
+
+- The application retrieves data from the server and generates quizzes randomly based on the fetched data.
+- Restarting the quiz results in the regeneration of questions with random selection.
+- The options for each question are also randomly generated, providing variation in each quiz attempt.
+- Users can proceed to the next question without answering the current one, with the assumption that answered questions are tracked in the summary.
+- The current question number and its corresponding category and difficulty are highlighted in the header for easy navigation and identification.
+
+### Possible Improvements
+
+- Implement functionality to add questions by category, allowing users to customize their quiz experience.
+- Gradually increase the difficulty level of questions to provide a progressive challenge for users.
+- Display the difficulty level of each question in the summary section to provide additional context and information to users.
+
 ## Backend
 
 This backend application serves as the server-side component of the project. It is responsible for handling requests related to quizzes.
@@ -44,29 +81,6 @@ API_PORT = XXXX;
 
 ```bash
 GET http://localhost:3001/api/quiz
-```
-
-## Frontend
-
-This frontend application is developed using React, TypeScript, Bootstrap, and Vite. It provides a user interface for interacting with the quiz data served by the backend.
-
-Navigate to the frontend directory.
-Install dependencies using the following command:
-
-```node
-npm install
-npm run dev
-```
-
-- Ensure that the backend server is running on port 3001. If it's running on a different port, update the VITE_APP_BASE_PATH variable in the .env file.
-
-### Running Tests & Build
-
-To build the frontend for production and testing:
-
-```node
-npm run build
-npm run test
 ```
 
 ### Development Workflow
