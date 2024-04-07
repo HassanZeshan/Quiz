@@ -1,18 +1,19 @@
-// import { useQuizContext } from "../../context/quizContext";
+import { useQuizContext } from "../../context/quizContext";
 
 const FormSingle = () => {
-  // const { currentQuestion } = useQuizContext();
+  const { currentQuestion } = useQuizContext();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    currentQuestion.selectedValue = e.target.value;
+  };
   return (
-    <div>
+    <>
       <div className="form-check">
         <input
           className="form-check-input"
           type="radio"
           name="questionRadio"
           value="true"
-          // onChange={(e) => {
-          //   currentQuestion.value = e.target.value;
-          // }}
+          onChange={handleChange}
         />
         <label className="form-check-label">True</label>
       </div>
@@ -22,13 +23,11 @@ const FormSingle = () => {
           type="radio"
           name="questionRadio"
           value="false"
-          // onChange={(e) => {
-          //   currentQuestion.value = e.target.value;
-          // }}
+          onChange={handleChange}
         />
         <label className="form-check-label">False</label>
       </div>
-    </div>
+    </>
   );
 };
 

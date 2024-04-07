@@ -7,14 +7,16 @@ type StartQuizProps = {
 const QuizInitiator: React.FC<StartQuizProps> = ({ questions }) => {
   const { startQuiz } = useQuizContext();
   return (
-    <div className="col-8">
+    <div className="col-auto mt-4 mb-4">
+      <h4 className="col-auto mb-6">Enjoy the Ride</h4>
+      <hr />
       <button
         className="btn btn-primary"
         onClick={() => {
           startQuiz(questions);
         }}
       >
-        Begin
+        Start Quiz
       </button>
     </div>
   );

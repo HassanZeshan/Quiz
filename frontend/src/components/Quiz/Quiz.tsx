@@ -4,39 +4,69 @@ import { useQuizContext } from "../../context/quizContext";
 import Question from "../Question/Question";
 import { QuizInitiator } from "../QuizInitiator";
 import { QuizSummary } from "../QuizSummary";
+import { Star, StarFill, StarHalf } from "react-bootstrap-icons";
 
 const Quiz: React.FC<QuizProps> = ({ questions }) => {
-  const { finalScore, currentQuestionIndex, currentQuestion, nextQuestion } =
-    useQuizContext();
+  const {
+    finalScore,
+    currentQuestionIndex,
+    currentQuestion,
+    nextQuestion,
+    questions: savedQuestions,
+  } = useQuizContext();
 
   const calculateResult = (event: FormEvent<HTMLFormElement>) => {
-    let formData: string = "";
-    const formInputs = (event.target as HTMLElement).querySelectorAll("input");
-    formInputs.forEach((input: HTMLInputElement) => {
-      if (input.type === "text") {
-        formData = input.value;
-      } else if (input.checked) {
-        formData = input.value;
-      }
-    });
-
     event.preventDefault();
-    nextQuestion(formData);
+    nextQuestion(currentQuestion.selectedValue ?? "");
   };
 
   return (
     <div className="row justify-content-center">
-      {finalScore >= 0 && <QuizSummary />}
-      {currentQuestionIndex < 0 && <QuizInitiator questions={questions} />}
-      {currentQuestion && (
-        <form onSubmit={calculateResult}>
-          state form data
-          <Question />
-          <button className="btn btn-primary" type="submit">
-            Next Question
-          </button>
-        </form>
-      )}
+      <div className="card quiz-card">
+        <div className="card-body">
+          {currentQuestionIndex < 0 && <QuizInitiator questions={questions} />}
+          {currentQuestion && (
+            <form onSubmit={calculateResult}>
+              <div className="row mb-3 question">
+                <div className="col-8 gt-2 text-start">
+                  <div className="row align-items-center">
+                    <div className="col-auto">
+                      <b>Category: </b>
+                      {currentQuestion.category}
+                    </div>
+                    <div className="col-auto">
+                      <b>Difficulty:</b>
+                      {currentQuestion.difficulty === "easy" && (
+                        <Star color="green" size={22} />
+                      )}
+                      {currentQuestion.difficulty === "medium" && (
+                        <StarHalf color="orange" size={22} />
+                      )}
+                      {currentQuestion.difficulty === "hard" && (
+                        <StarFill color="red" size={22} />
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 text-end">
+                  {currentQuestionIndex + 1} of {savedQuestions.length} Question
+                </div>
+              </div>
+              <hr />
+              <Question />
+              <hr/>
+              <div className="row justify-content-center">
+                <div className="col-auto">
+                  <button className="btn btn-primary" type="submit">
+                    Next Question
+                  </button>
+                </div>
+              </div>
+            </form>
+          )}
+          {finalScore >= 0 && <QuizSummary />}
+        </div>
+      </div>
     </div>
   );
 };
