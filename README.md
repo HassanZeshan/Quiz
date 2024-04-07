@@ -36,9 +36,9 @@ npm run dev
 
 ## Development Workflow
 
-Backend Development: Make changes to the backend code located in the backend directory.
+- Backend Development: Make changes to the backend code located in the backend directory.
 Restart the backend server to apply changes.
-Frontend Development: Make changes to the frontend code located in the frontend directory. The development server will hot-reload changes automatically.
+- Frontend Development: Make changes to the frontend code located in the frontend directory. The development server will hot-reload changes automatically.
 
 ## Technologies Used
 

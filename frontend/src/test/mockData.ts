@@ -1,6 +1,6 @@
 import { QuizItem, StateType } from "@hooks/types";
 
-const questions:QuizItem[] = [           
+export const mockQuestions:QuizItem[] = [           
     {
         category: 'General Knowledge',
         type: 'multiple', // Assuming multiple-choice type
@@ -36,7 +36,7 @@ const questions:QuizItem[] = [
     ];
     const state:StateType = {
         currentQuestionIndex: 3,
-        questions: questions,
+        questions: mockQuestions,
         correctAnswers: 2,
         attemptedQuestion:2,
         finalScore:0
