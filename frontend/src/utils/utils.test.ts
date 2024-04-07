@@ -24,7 +24,7 @@ import { mockData } from '../test/mockData';
     describe('shuffleArray', () => {
       it('shuffles an array', () => {
         const array = ['A', 'B', 'C', 'D'];
-        const shuffledArray = shuffleArray(array);
+        const shuffledArray = shuffleArray(array);        
         expect(shuffledArray).not.toEqual(array);
         expect(shuffledArray.length).toEqual(array.length);
         

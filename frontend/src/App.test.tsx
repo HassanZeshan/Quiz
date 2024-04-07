@@ -13,9 +13,7 @@ describe("App", () => {
     render(<App />);
     await waitFor(() => {
       expect(screen.getByText("Cint Quiz")).toBeInTheDocument();
-      // expect(screen.getByText("Test Question")).toBeInTheDocument();
-      // expect(screen.getByText("Start Quiz")).toBeInTheDocument();
-      // expect(screen.getByText("Restart Quiz")).toBeInTheDocument();
+      expect(screen.getByText("Start Quiz")).toBeInTheDocument();
     });
   });
 });

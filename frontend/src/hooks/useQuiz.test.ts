@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react";
 import { useQuiz } from "./useQuiz";
 import { QuizItem } from "../types";
 import { describe, expect, it } from "vitest";
