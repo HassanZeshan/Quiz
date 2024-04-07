@@ -1,4 +1,4 @@
-import { QuizItem, StateType } from "@hooks/types";
+import { QuizItem, StateType } from "../types";
 
 export const mockQuestions:QuizItem[] = [           
     {

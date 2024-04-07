@@ -25,7 +25,7 @@
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@api/*": ["src/api/*"],
-      "@context/*": ["src/context/*"]
+      "@context/*": ["src/context/*"],      
     }
   },
   "include": ["src", "setup.ts"],

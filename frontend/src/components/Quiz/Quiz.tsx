@@ -4,7 +4,7 @@ import Question from "../Question/Question";
 import { QuizInitiator } from "../QuizInitiator";
 import { QuizSummary } from "../QuizSummary";
 import { Star, StarFill, StarHalf } from "react-bootstrap-icons";
-import { QuizItem } from "@hooks/types";
+import { QuizItem } from "../../types";
 
 type QuizProps = {
   questions: QuizItem[];

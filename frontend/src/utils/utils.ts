@@ -1,4 +1,4 @@
-import { StateType,QuizItem } from "@hooks/types";
+import { StateType,QuizItem } from "../types";
 
 export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
     for (let currentIndex = questions.length - 1; currentIndex > 0; currentIndex--) {
@@ -7,9 +7,7 @@ export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
     }
     return questions;
   };
-
-
-
+  
   export const shuffleArray = (array: string[]): string[] => {
     
     const shuffledArray = [...array];  

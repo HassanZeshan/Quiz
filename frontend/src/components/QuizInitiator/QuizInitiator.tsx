@@ -1,5 +1,5 @@
 import { useQuizContext } from "@context/quizContext";
-import { QuizItem } from "@hooks/types";
+import { QuizItem } from "../../types";
 
 type StartQuizProps = {
   questions: QuizItem[];

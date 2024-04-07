@@ -2,13 +2,13 @@ export enum QuestionType {
   Text="text",
   Multiple="multiple",
   Boolean="boolean",  
-};
+}
 
 enum QuestionDifficulty {
   Easy="easy",
   Medium="medium",
   Hard="hard"
-};
+}
 
 export interface QuizItem {
   category: string;

@@ -2,12 +2,7 @@ import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react';
 import viteEnvCompatiblePlugin from 'vite-plugin-env-compatible';
 
-export default defineConfig({
-  plugins: [react(),
-    (viteEnvCompatiblePlugin as any)({      
-      dotenvFile: '.env'
-    })
-  ],  
+export default defineConfig({   
   resolve: {
     alias: {
       '@components': '/src/components',

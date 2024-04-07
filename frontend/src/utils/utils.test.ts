@@ -16,6 +16,7 @@ import { mockData } from '../test/mockData';
        
         const shuffledQuestions = shuffleQuizQuestions(questions);        
         expect(shuffledQuestions.length).toEqual(questions.length);
+        // expect(shuffledQuestions).not.toEqual(shuffledQuestions);
         
       });
     });
