@@ -13,15 +13,22 @@ export const useQuiz = () => {
 
   const quizReducer = (state: StateType, action: QuizAction)=>  {
     switch (action.type) {
-      case ActionType.START_QUIZ: {
+      case ActionType.INITIALIZE: {
         return {
-          ...initialState,
-          currentQuestionIndex: 0,
+          ...initialState,          
           questions: shuffleQuizQuestions(
             adjustQuestionAnswers(action.payload.quiz)
           ),
         };
       }
+
+      case ActionType.START_QUIZ: {
+        return {
+          ...state,
+          currentQuestionIndex: 0,          
+        };
+      }
+      
       case ActionType.NEXT_QUESTION:{
         const correct_answer=state.questions[state.currentQuestionIndex].correct_answer.trim().toLowerCase();
         const user_answer=action.payload.userAnswer.trim().toLowerCase();       
@@ -54,8 +61,11 @@ export const useQuiz = () => {
 
   const [state, dispatch] = useReducer(quizReducer, initialState);
 
-  const startQuiz = (quiz: QuizItem[]) => {
-    dispatch({ type: ActionType.START_QUIZ, payload: { quiz } });
+  const startQuiz = () => {
+    dispatch({ type: ActionType.START_QUIZ });
+  };
+   const initializeQuiz = (quiz: QuizItem[]) => {
+    dispatch({ type: ActionType.INITIALIZE, payload: { quiz } });
   };
   const restartQuiz = () => {
     dispatch({ type: ActionType.RESET_QUIZ });
@@ -64,7 +74,8 @@ export const useQuiz = () => {
     dispatch({ type: ActionType.NEXT_QUESTION, payload: { userAnswer } });
   };
   const getCurrentQuestion =()=> {
-    return state.questions[state.currentQuestionIndex];
+    return state.questions[state.currentQuestionIndex];   
+    
   };
 
   return {
@@ -73,5 +84,6 @@ export const useQuiz = () => {
     startQuiz,
     nextQuestion,
     restartQuiz,
+    initializeQuiz
   };
 };

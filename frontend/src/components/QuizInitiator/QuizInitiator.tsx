@@ -1,11 +1,6 @@
 import { useQuizContext } from "@context/quizContext";
-import { QuizItem } from "../../types";
 
-type StartQuizProps = {
-  questions: QuizItem[];
-};
-
-const QuizInitiator: React.FC<StartQuizProps> = ({ questions }) => {
+const QuizInitiator = () => {
   const { startQuiz } = useQuizContext();
   return (
     <div className="col-auto mt-4 mb-4">
@@ -14,7 +9,7 @@ const QuizInitiator: React.FC<StartQuizProps> = ({ questions }) => {
       <button
         className="btn btn-primary"
         onClick={() => {
-          startQuiz(questions);
+          startQuiz();
         }}
       >
         Start Quiz

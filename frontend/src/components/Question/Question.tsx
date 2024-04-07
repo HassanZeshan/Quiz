@@ -3,6 +3,7 @@ import { FormSelect, FormSwitch, FormText } from "../Form";
 
 const Question = () => {
   const { currentQuestion } = useQuizContext();
+  console.log(currentQuestion, "question component");
   return (
     <div className="row justify-content-center">
       {!currentQuestion && <div>Question Not found </div>}

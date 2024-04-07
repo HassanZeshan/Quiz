@@ -34,8 +34,7 @@ export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
       return {
         ...question,
         answers: shuffleArray([...incorrectAnswers, question.correct_answer]),
-        name:'',
-        value:'',        
+        selectedValue:'',              
       };
     });
   };

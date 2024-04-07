@@ -4,19 +4,14 @@ import Question from "../Question/Question";
 import { QuizInitiator } from "../QuizInitiator";
 import { QuizSummary } from "../QuizSummary";
 import { Star, StarFill, StarHalf } from "react-bootstrap-icons";
-import { QuizItem } from "../../types";
 import styled from "styled-components";
-
-type QuizProps = {
-  questions: QuizItem[];
-};
 
 const QuizCard = styled.div`
   width: 60rem;
-  height: 25rem;
+  height: 28rem;
 `;
 
-const Quiz: React.FC<QuizProps> = ({ questions }) => {
+const Quiz = () => {
   const {
     finalScore,
     currentQuestionIndex,
@@ -34,7 +29,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
     <div className="row justify-content-center">
       <QuizCard className="card">
         <div className="card-body">
-          {currentQuestionIndex < 0 && <QuizInitiator questions={questions} />}
+          {currentQuestionIndex < 0 && <QuizInitiator />}
           {currentQuestion && (
             <form onSubmit={calculateResult}>
               <div className="row mb-3 question">

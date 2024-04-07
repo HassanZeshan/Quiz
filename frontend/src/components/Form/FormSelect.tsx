@@ -4,7 +4,7 @@ type SelectProps = {
   options: string[];
 };
 const FormSelect: React.FC<SelectProps> = ({ options }) => {
-  const { currentQuestion } = useQuizContext();
+  const { currentQuestion, currentQuestionIndex } = useQuizContext();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     currentQuestion.selectedValue = e.target.value;
   };
@@ -12,18 +12,23 @@ const FormSelect: React.FC<SelectProps> = ({ options }) => {
     <>
       {options.map((option, index) => {
         return (
-          <div className="form-check text-left" key={index}>
+          <div
+            className="form-check text-left"
+            key={`${currentQuestionIndex}-${index}`}
+          >
             <input
               className="form-check-input"
               type="radio"
               value={option}
-              name={"formRadio"}
+              name={`questionOptions${currentQuestionIndex}`}
               id={option}
               onChange={handleChange}
             />
-            <label className="form-check-label" htmlFor={option}>
-              {option}
-            </label>
+            <label
+              className="form-check-label"
+              htmlFor={option}
+              dangerouslySetInnerHTML={{ __html: option }}
+            />
           </div>
         );
       })}

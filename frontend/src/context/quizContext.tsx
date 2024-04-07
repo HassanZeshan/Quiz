@@ -6,7 +6,8 @@ interface ContextStateType extends StateType {
   currentQuestion: QuizItem;
   nextQuestion: (userAnswer: string) => void;
   restartQuiz: () => void;
-  startQuiz: (quiz: QuizItem[]) => void;
+  startQuiz: () => void;
+  initializeQuiz: (quiz: QuizItem[]) => void;
 }
 
 const QuizContext = createContext<ContextStateType | undefined>(undefined);
