@@ -1,4 +1,4 @@
-import { useQuizContext } from "../../context/quizContext";
+import { useQuizContext } from "@context/quizContext";
 const FormText = () => {
   const { currentQuestion } = useQuizContext();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

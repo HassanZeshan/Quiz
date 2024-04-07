@@ -1,4 +1,4 @@
-import { useQuizContext } from "../../context/quizContext";
+import { useQuizContext } from "@context/quizContext";
 import { QuizItem } from "../Quiz";
 type StartQuizProps = {
   questions: QuizItem[];

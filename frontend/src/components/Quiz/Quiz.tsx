@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { QuizProps } from ".";
-import { useQuizContext } from "../../context/quizContext";
+import { useQuizContext } from "@context/quizContext";
 import Question from "../Question/Question";
 import { QuizInitiator } from "../QuizInitiator";
 import { QuizSummary } from "../QuizSummary";

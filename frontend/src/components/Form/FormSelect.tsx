@@ -1,4 +1,4 @@
-import { useQuizContext } from "../../context/quizContext";
+import { useQuizContext } from "@context/quizContext";
 
 type SelectProps = {
   options: string[];

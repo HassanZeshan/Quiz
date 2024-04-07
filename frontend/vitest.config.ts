@@ -13,9 +13,10 @@ export default defineConfig({
       '@components': '/src/components',
       '@utils': '/src/utils',
       '@hooks':'/src/hooks',
-      '@api':'/src/api',          
+      '@api':'/src/api',  
+      '@context':'/src/context',              
     },
-  }, 
+  },    
   test: {
     environment: 'jsdom',
     setupFiles: ['./setup.ts'],
