@@ -1,5 +1,4 @@
-import { QuizItem } from "@components/Quiz";
-import { StateType } from "@hooks/types";
+import { StateType,QuizItem } from "@hooks/types";
 
 export const shuffleQuizQuestions = (questions: QuizItem[]): QuizItem[] => {
     for (let currentIndex = questions.length - 1; currentIndex > 0; currentIndex--) {

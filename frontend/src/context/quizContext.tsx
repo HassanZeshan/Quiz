@@ -1,7 +1,6 @@
 import React, { ReactNode, createContext, useContext } from "react";
 import { useQuiz } from "@hooks/useQuiz";
-import { StateType } from "@hooks/types";
-import { QuizItem } from "@components/Quiz";
+import { QuizItem, StateType } from "@hooks/types";
 
 interface ContextStateType extends StateType {
   currentQuestion: QuizItem;

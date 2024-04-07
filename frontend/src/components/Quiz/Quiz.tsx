@@ -1,10 +1,14 @@
 import { FormEvent } from "react";
-import { QuizProps } from ".";
 import { useQuizContext } from "@context/quizContext";
 import Question from "../Question/Question";
 import { QuizInitiator } from "../QuizInitiator";
 import { QuizSummary } from "../QuizSummary";
 import { Star, StarFill, StarHalf } from "react-bootstrap-icons";
+import { QuizItem } from "@hooks/types";
+
+type QuizProps = {
+  questions: QuizItem[];
+};
 
 const Quiz: React.FC<QuizProps> = ({ questions }) => {
   const {
@@ -54,7 +58,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
               </div>
               <hr />
               <Question />
-              <hr/>
+              <hr />
               <div className="row justify-content-center">
                 <div className="col-auto">
                   <button className="btn btn-primary" type="submit">
