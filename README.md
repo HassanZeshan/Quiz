@@ -44,13 +44,13 @@ npm run test
 - The options for each question are also randomly generated, providing variation in each quiz attempt.
 - Users can proceed to the next question without answering the current one, with the assumption that answered questions are tracked in the summary.
 - The current question number and its corresponding category and difficulty are highlighted in the header for easy navigation and identification.
-- Testing can be enhanced as it currently focuses solely on happy path scenarios.
 
 ### Possible Improvements
 
 - Implement functionality to add questions by category, allowing users to customize their quiz experience.
 - Gradually increase the difficulty level of questions to provide a progressive challenge for users.
 - Display the difficulty level of each question in the summary section to provide additional context and information to users.
+- Testing can be enhanced as it currently focuses solely on happy path scenarios due to time restrictions
 
 ## Backend
 
@@ -94,8 +94,8 @@ GET http://localhost:3001/api/quiz
 
 ### Backend Tech
 
-Node.js
-Express
+- Node.js
+- Express
 
 ### Frontend Tech
 
