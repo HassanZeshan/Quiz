@@ -4,7 +4,6 @@ const router = express.Router();
 const fs = require("fs").promises;
 
 router.get("/", async (req, res) => {
-  // Read the JSON file
   try {
     const data = await fs.readFile("../backend/data.json", "utf8");
     res.status(200).send(data);

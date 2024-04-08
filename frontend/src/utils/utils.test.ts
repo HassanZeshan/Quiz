@@ -15,8 +15,7 @@ import { mockData } from '../test/mockData';
       it('shuffles an array of quiz questions', () => {
        
         const shuffledQuestions = shuffleQuizQuestions(questions);        
-        expect(shuffledQuestions.length).toEqual(questions.length);
-        // expect(shuffledQuestions).not.toEqual(shuffledQuestions);
+        expect(shuffledQuestions.length).toEqual(questions.length);       
         
       });
     });
@@ -24,8 +23,7 @@ import { mockData } from '../test/mockData';
     describe('shuffleArray', () => {
       it('shuffles an array', () => {
         const array = ['A', 'B', 'C', 'D'];
-        const shuffledArray = shuffleArray(array);        
-        // expect(shuffledArray).not.toEqual(array);
+        const shuffledArray = shuffleArray(array);                
         expect(shuffledArray.length).toEqual(array.length);
         
       });

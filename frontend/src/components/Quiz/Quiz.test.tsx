@@ -22,7 +22,7 @@ vi.mock("@context/quizContext", () => ({
     questions: [
       {
         category: "General Knowledge",
-        type: "multiple", // Assuming multiple-choice type
+        type: "multiple",
         difficulty: "easy",
         question: "What is the capital of France?",
         correct_answer: "Paris",

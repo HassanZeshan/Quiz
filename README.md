@@ -44,6 +44,7 @@ npm run test
 - The options for each question are also randomly generated, providing variation in each quiz attempt.
 - Users can proceed to the next question without answering the current one, with the assumption that answered questions are tracked in the summary.
 - The current question number and its corresponding category and difficulty are highlighted in the header for easy navigation and identification.
+- Testing can be enhanced as it currently focuses solely on happy path scenarios.
 
 ### Possible Improvements
 
