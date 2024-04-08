@@ -19,7 +19,10 @@ describe("useQuiz", () => {
   it("should start the quiz correctly", () => {
     const { result } = renderHook(() => useQuiz());
     act(() => {
-      result.current.startQuiz(quiz);
+      result.current.initializeQuiz(quiz);
+    });
+    act(() => {
+      result.current.startQuiz();
     });
 
     expect(result.current.currentQuestionIndex).toEqual(0);
@@ -28,8 +31,11 @@ describe("useQuiz", () => {
 
   it("should handle next question correctly", () => {
     const { result } = renderHook(() => useQuiz());
+     act(() => {
+      result.current.initializeQuiz(quiz);
+    });
     act(() => {
-      result.current.startQuiz(quiz);
+      result.current.startQuiz();
     });
     act(() => {
       result.current.nextQuestion("Correct Answer");
@@ -42,8 +48,11 @@ describe("useQuiz", () => {
 
   it("should reset the quiz correctly", () => {
     const { result } = renderHook(() => useQuiz());
+     act(() => {
+      result.current.initializeQuiz(quiz);
+    });
     act(() => {
-      result.current.startQuiz(quiz);
+      result.current.startQuiz();
     });
     act(() => {
       result.current.nextQuestion("Correct Answer");
