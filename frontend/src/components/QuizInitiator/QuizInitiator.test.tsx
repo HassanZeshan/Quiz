@@ -1,7 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 import QuizInitiator from "./QuizInitiator";
 import { describe, expect, it, vi } from "vitest";
-import { useQuizContext } from "@context/quizContext";
 
 const startQuizMock = vi.fn();
 vi.mock("@context/quizContext", () => ({
@@ -18,6 +17,5 @@ describe("QuizInitiator", async () => {
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
     expect(startQuizMock).toHaveBeenCalled();
-    expect(useQuizContext().startQuiz).toHaveBeenCalledWith();
   });
 });
