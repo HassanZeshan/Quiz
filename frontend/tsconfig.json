@@ -28,6 +28,6 @@
       "@context/*": ["src/context/*"],      
     }
   },
-  "include": ["src", "setup.ts"],
+  "include": ["src", "src/test/setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

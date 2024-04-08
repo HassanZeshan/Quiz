@@ -45,12 +45,7 @@ const QuizSummary = () => {
         </SummaryRow>
       </div>
       <hr />
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          restartQuiz();
-        }}
-      >
+      <button className="btn btn-primary" onClick={restartQuiz}>
         Restart
       </button>
     </div>

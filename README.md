@@ -16,7 +16,7 @@ Before starting development, ensure you have the following installed:
 
 ## Frontend
 
-This frontend application is developed using React, TypeScript, Bootstrap, and Vite. It provides a user interface for interacting with the quiz data served by the backend.
+This frontend application is developed using React, TypeScript, Bootstrap,styled-components and Vite. It provides a user interface for interacting with the quiz data served by the backend.
 
 Navigate to the frontend directory.
 Install dependencies using the following command:
@@ -47,10 +47,13 @@ npm run test
 
 ### Possible Improvements
 
+Due to time constraints, the following manageable improvements are possible:
+
 - Implement functionality to add questions by category, allowing users to customize their quiz experience.
 - Gradually increase the difficulty level of questions to provide a progressive challenge for users.
 - Display the difficulty level of each question in the summary section to provide additional context and information to users.
 - Testing can be enhanced as it currently focuses solely on happy path scenarios due to time restrictions
+- The question dataset can be dynamically adjusted based on user input, allowing for customization of the number of questions for a quiz. 
 
 ## Backend
 
@@ -62,10 +65,11 @@ The backend reads quiz data from a data.json file located in the root of the bac
 
 ```node
 npm install
-npm start
+npm run dev
 ```
 
 - By default, the backend runs on port 3001. You can specify a different port by setting the API_PORT environment variable.
+- Currently, I'm utilizing the provided dataset comprising fifty questions. However, there is flexibility to modify it if needed.
 
 ```node
 API_PORT = XXXX;
@@ -102,4 +106,5 @@ GET http://localhost:3001/api/quiz
 - React
 - TypeScript
 - Bootstrap
+- Styled Components
 - Vite
