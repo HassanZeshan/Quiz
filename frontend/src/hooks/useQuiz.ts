@@ -1,14 +1,17 @@
-import { useReducer } from "react";
+import {  useReducer, useState } from "react";
 import { ActionType, QuizAction, QuizItem, StateType } from "../types";
 import { adjustQuestionAnswers, calculateFinalScore, shuffleQuizQuestions } from "@utils/utils";
 
-export const useQuiz = () => {
-  const initialState: StateType = {
+const initialState: StateType = {
     currentQuestionIndex: -1,
     correctAnswers: 0,
-    attemptedQuestion:0,
+    attemptedQuestion: 0,
     finalScore: -1,
     questions: [],
+    isLoading: false,
+    error: null,
+    setIsLoading: ()=>{},
+    setError: ()=>{}
   };  
 
   const quizReducer = (state: StateType, action: QuizAction)=>  {
@@ -58,7 +61,10 @@ export const useQuiz = () => {
         return state;
     }
   };
-
+  
+  export const useQuiz = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [state, dispatch] = useReducer(quizReducer, initialState);
 
   const startQuiz = () => {
@@ -84,6 +90,10 @@ export const useQuiz = () => {
     startQuiz,
     nextQuestion,
     restartQuiz,
-    initializeQuiz
+    initializeQuiz,
+    isLoading,
+    error,
+    setError,
+    setIsLoading,
   };
 };

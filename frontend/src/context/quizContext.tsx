@@ -1,14 +1,6 @@
 import React, { ReactNode, createContext, useContext } from "react";
 import { useQuiz } from "@hooks/useQuiz";
-import { QuizItem, StateType } from "../types";
-
-interface ContextStateType extends StateType {
-  currentQuestion: QuizItem;
-  nextQuestion: (userAnswer: string) => void;
-  restartQuiz: () => void;
-  startQuiz: () => void;
-  initializeQuiz: (quiz: QuizItem[]) => void;
-}
+import { ContextStateType } from "../types";
 
 const QuizContext = createContext<ContextStateType | undefined>(undefined);
 

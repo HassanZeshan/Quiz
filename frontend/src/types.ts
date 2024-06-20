@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export enum QuestionType {
   Text="text",
   Multiple="multiple",
@@ -26,6 +28,10 @@ export interface StateType {
     attemptedQuestion:number;
     finalScore: number;
     questions: QuizItem[];
+    isLoading: boolean;
+    error: string | null;
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    setError: Dispatch<SetStateAction<string | null>>;
 
 }
 export enum ActionType {
@@ -40,3 +46,15 @@ export type QuizAction =
   | { type: ActionType.RESET_QUIZ }
   | { type: ActionType.START_QUIZ} 
   | { type: ActionType.INITIALIZE; payload: { quiz: QuizItem[] } };
+
+  export interface ContextStateType extends StateType {
+  currentQuestion: QuizItem;
+  nextQuestion: (userAnswer: string) => void;
+  restartQuiz: () => void;
+  startQuiz: () => void;
+  initializeQuiz: (quiz: QuizItem[]) => void;
+  isLoading: boolean;
+  error: string | null;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<string | null>>;
+}
