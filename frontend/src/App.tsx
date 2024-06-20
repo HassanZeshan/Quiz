@@ -22,7 +22,7 @@ const App = () => {
   };
 
   return (
-    <div className="row text-center gy-6">
+    <div className="row text-center justify-content-center gy-6">
       <h1 className="mb-6">Cint Quiz</h1>
       <div className="row justify-content-center gx-5 gy-5">
         {questions && <Quiz />}

@@ -9,6 +9,9 @@ import { QuizInitiator } from "@components/QuizInitiator";
 const QuizCard = styled.div`
   width: 60rem;
   height: 28rem;
+  @media (max-width: 768px) {
+    height: 32rem;
+  }
 `;
 
 const Quiz = () => {
